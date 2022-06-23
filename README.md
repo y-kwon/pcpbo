@@ -1,3 +1,3 @@
 # Physically Consistent Preferential Bayesian Optimization
 
-The code for this repository will be released on June 23, 2022, at noon (UTC).
+The code for this repository will be released on June 23, 2022, at ~noon~ 18:00 (UTC).
