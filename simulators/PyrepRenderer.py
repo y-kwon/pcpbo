@@ -69,7 +69,7 @@ if __name__ == '__main__':
     import argparse
     import sys
     import matplotlib.pyplot as plt
-    from config import load_config
+    from utils.config import load_config
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--task', type=str, default='deep-fried_shrimp')

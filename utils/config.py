@@ -113,8 +113,8 @@ class BaseConfig:
         self.hyp_lr = 1e-2
         self.post_lr = 1e-1
         self.num_opt = 20  # number of update loop (post. and hyper-param.)
-        self.num_init_duel = 1
-        self.num_duel = 50
+        self.num_init_query = 1
+        self.num_query = 50
         self.num_in_dim = 21
         # for CEM
         self.num_path = 400

@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from isaacgym import gymapi
 from isaacgym import gymtorch
 
-from config import load_config
+from utils.config import load_config
 from pcpbo.phy_opt import CrossEntropyMethod
 
 
