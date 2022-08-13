@@ -16,7 +16,6 @@ a {
     text-decoration: underline; }
 
 .btn {
-  width: 150px;
   /*height: 120px;*/
   display: inline-block;
   margin-top: 2vw;
@@ -42,6 +41,7 @@ a {
 @media screen and (min-width: 64em) {
   .btn {
     padding: 0.75rem 1rem;
+    width: 150px;
   }
 }
 
@@ -49,17 +49,19 @@ a {
   .btn {
     padding: 0.6rem 0.9rem;
     font-size: 0.9rem;
+    width: 150px;
   }
 }
 
 @media screen and (max-width: 42em) {
   .btn {
-    padding: 0.2rem 0.5rem;
-    font-size: 1vw;
+    padding: 0.1rem 0.1rem;
+    font-size: 0.1rem;
+    width: 100px;
   }
 
   .btn + .btn {
-    margin-left: 1rem;
+    margin-left: 0.5rem;
   }
 }
 
@@ -79,19 +81,19 @@ a {
   background-image: linear-gradient(120deg, #155799, #159957);
 }
 
-@media screen and (min-width: 64em) {
+@media screen and (min-width: 72em) {
   .page-header {
     padding: 4rem 5rem;
   }
 }
 
-@media screen and (min-width: 42em) and (max-width: 64em) {
+@media screen and (min-width: 64em) and (max-width: 72em) {
   .page-header {
     padding: 2rem 4rem;
   }
 }
 
-@media screen and (max-width: 42em) {
+@media screen and (max-width: 64em) {
   .page-header {
     padding: 2rem 1rem;
   }
@@ -451,6 +453,15 @@ a {
     margin: 0 auto;
     width: 30%;
   }
+}
+
+.youtube_aspect_ratio {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
+.youtube_aspect_ratio iframe {
+    width: 100%;
+    height: 100%;
 }
 
 /*.for_iframe{*/
