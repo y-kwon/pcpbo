@@ -57,3 +57,8 @@ $ docker run --rm -it --gpus all -e DISPLAY=$DISPLAY\
 (docker)$ python run_cem.py --task deep-fried_shrimp --pref_weight 0.2 0.8
 ```
 
+## Acknowledgements
+
+The implementation of PBBO is based
+on [this repository](https://github.com/EmuKit/emukit/tree/main/emukit/examples/preferential_batch_bayesian_optimization)
+.

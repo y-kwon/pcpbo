@@ -40,7 +40,7 @@ class RandomAcq(AcquisitionFunction):
         def gen_next_points():
             return np.array(
                 [(np.random.rand(num_points) - 0.5) * self.prob_len[i] + self.prob_mean[i] for
-                 i in range(self.task.task.dim_w)],
+                 i in range(self.task.dim_w)],
                 dtype=np.float64).T
 
         next_xi, next_xj = gen_next_points(), gen_next_points()
@@ -57,10 +57,10 @@ class ThompsonSampling(AcquisitionFunction):
 
     def choose_next_points(self, pbbo, num_duels=1, random=False, vis_path=True):
         if random:
-            if self.num_in_dim < self.task.task.dim_w * 2:
+            if self.num_in_dim < self.task.dim_w * 2:
                 raise NotImplementedError()
             cand_in_dim = np.round(np.linspace(self.range_w[0], self.range_w[1], self.num_in_dim), 3)
-            next_xi, next_xj = np.random.choice(cand_in_dim, size=(2, self.task.task.dim_w), replace=False)
+            next_xi, next_xj = np.random.choice(cand_in_dim, size=(2, self.task.dim_w), replace=False)
             return (next_xi, next_xj), None
         else:
             if num_duels > 1:

@@ -7,7 +7,7 @@ class BaseEnv:
         self.dim_state = cfg.dim_state
         self.dim_w = cfg.dim_w
 
-        self.pref_weight = np.array([cfg.cost_weight])
+        self.pref_weight = np.array([cfg.pref_weight])
 
     def step(self):
         raise NotImplementedError()

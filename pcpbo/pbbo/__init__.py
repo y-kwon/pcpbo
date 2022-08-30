@@ -4,4 +4,4 @@ from .VariationalInference import VariationalInference
 from .AcquisitionFunction import RandomAcq, ThompsonSampling
 
 from .ArtificialUser import IdealArtificialUser, UncertainArtificialUser
-from .QuestionnaireSystem import TrjBasedQuestionnaireSystem, ImgBasedQuestionnaireSystem
+from .QuestionnaireSystem import *

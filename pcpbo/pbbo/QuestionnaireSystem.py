@@ -5,11 +5,20 @@ class QuestionnaireSystem:
     def gen_query(self):
         raise NotImplementedError()
 
-    def get_answer(self, answer):
-        self.method.get_answer(answer)
+    def get_answer(self, answer, gt_answer):
+        self.method.get_answer(answer, gt_answer)
 
-    def terminate(self):
-        self.method.terminate()
+    def terminate(self, fl=True):
+        self.method.terminate(fl)
+
+
+class NaiveQuestionnaireSystem(QuestionnaireSystem):
+    def __init__(self, cfg, method):
+        super(NaiveQuestionnaireSystem, self).__init__(cfg, method)
+
+    def gen_query(self):
+        query = self.method.gen_next_duel()
+        return query
 
 
 class TrjBasedQuestionnaireSystem(QuestionnaireSystem):

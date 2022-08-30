@@ -11,6 +11,7 @@ import torch
 from simulators import PyrepRenderer
 from simulators import IsaacShrimpEnv
 from pcpbo.pbbo import IdealArtificialUser, UncertainArtificialUser
+from utils import Sin4PBBO
 
 
 def __gen_directories(cfg):
@@ -41,6 +42,14 @@ def load_config(args, read_only=False):
     if not read_only:
         method = 'pcpbo' if cfg.pcpbo else 'pbo'
         cfg.logdir = f'logdir/{cfg.task}/{method}/{cfg.pref_weight}'
+        if cfg.synth and cfg.skip:
+            cfg.logdir = f'{cfg.logdir}/synth_skip'
+        elif cfg.synth and not cfg.skip:
+            cfg.logdir = f'{cfg.logdir}/synth_noskip'
+        elif not cfg.synth and cfg.skip:
+            cfg.logdir = f'{cfg.logdir}/nosynth_skip'
+        elif not (cfg.synth and cfg.skip):
+            cfg.logdir = f'{cfg.logdir}/nosynth_noskip'
         cfg.logdir = f'{cfg.logdir}/{time.strftime("%Y%m%d%H%M%S", time.localtime())}'
         __gen_directories(cfg)
 
@@ -77,6 +86,9 @@ def load_task(cfg):
         # sim = IsaacTempuraEnv(cfg)
         sim = NotImplementedError
         renderer = PyrepRenderer(cfg)
+    elif cfg.task == 'sin' and cfg.pbbo:
+        task = Sin4PBBO(cfg)
+        return cfg, task, None
     else:
         raise NotImplementedError(cfg.task)
 
@@ -116,6 +128,7 @@ class BaseConfig:
         self.num_init_query = 1
         self.num_query = 50
         self.num_in_dim = 21
+        self.num_reparam = 10000
         # for CEM
         self.num_path = 400
         self.num_opt_cem = 10

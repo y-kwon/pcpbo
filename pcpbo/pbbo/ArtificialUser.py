@@ -7,9 +7,9 @@ class ArtificialUser:
         self.pref_weight = cfg.pref_weight
 
     def pref_fcn(self, trj):
-        return self.task.pref_fcn(trj, self.pref_weight)
+        return self.task.sum_cost_fcn(trj, self.pref_weight)
 
-    def return_answer(self, left_trj, right_trj):
+    def return_answer(self, query):
         raise NotImplementedError()
 
 
@@ -17,7 +17,8 @@ class IdealArtificialUser(ArtificialUser):
     def __init__(self, cfg, task):
         super(IdealArtificialUser, self).__init__(cfg, task)
 
-    def return_answer(self, left_trj, right_trj):
+    def return_answer(self, query):
+        left_trj, right_trj = query
         left_dis, right_dis = self.pref_fcn(left_trj[None, ...]), self.pref_fcn(right_trj[None, ...])
         return int(right_dis < left_dis), int(right_dis < left_dis)
 
@@ -28,7 +29,8 @@ class UncertainArtificialUser(ArtificialUser):
         self.skip_range = skip_range
         self.skip_fl = cfg.skip
 
-    def return_answer(self, left_trj, right_trj):
+    def return_answer(self, query):
+        left_trj, right_trj = query
         left_dis, right_dis = self.pref_fcn(left_trj[None, ...]), self.pref_fcn(right_trj[None, ...])
         gt_answer = int(right_dis < left_dis)
         min_dis = np.min([left_dis, right_dis])
